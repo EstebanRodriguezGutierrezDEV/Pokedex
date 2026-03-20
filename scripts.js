@@ -56,7 +56,6 @@ function mostrarPokemon(poke) {
     const div = document.createElement("div");
     div.classList.add("pokemon");
     div.innerHTML = `
-        <p class="pokemon-id-back">#${pokeId}</p>
         <div class="pokemon-imagen">
             <img src="${poke.sprites.other["official-artwork"].front_default}" alt="${poke.name}">
         </div>
