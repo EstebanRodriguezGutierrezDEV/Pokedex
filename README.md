@@ -1,6 +1,6 @@
 # 🎮 Pokédex Retro Arcade
 
-Una Pokédex interactiva con diseño retro arcade que permite explorar y filtrar Pokémon de la primera generación (151 Pokémon).
+Una Pokédex interactiva con diseño retro arcade que permite explorar y filtrar Pokémon de la primera generación (151 Pokémon)
 
 ![Pokédex](./assets/pokedex.png)
 
