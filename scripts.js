@@ -89,6 +89,11 @@ botonesHeader.forEach(boton => boton.addEventListener("click", (event) => {
     const botonId = event.currentTarget.id;
     filtroActual = botonId;
     buscador.value = "";
+
+    // Quitar clase active de todos los botones
+    botonesHeader.forEach(btn => btn.classList.remove("active"));
+    // Añadir clase active al botón clicado
+    event.currentTarget.classList.add("active");
     
     if(botonId === "ver-todos") {
         filtrarYMostrar(() => true);
@@ -143,36 +148,107 @@ function mostrarDetalles(poke) {
     
     const modalHTML = `
         <div class="modal-overlay" id="modalOverlay">
-            <div class="modal-content">
-                <button class="modal-close" id="modalClose">✕</button>
-                <div class="modal-header">
-                    <h1>${poke.name}</h1>
-                    <span class="modal-id">#${pokeId}</span>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-imagen">
-                        <img src="${poke.sprites.other["official-artwork"].front_default}" alt="${poke.name}">
-                    </div>
-                    <div class="modal-info">
-                        <div class="info-section">
-                            <h3>Tipos</h3>
-                            <div class="modal-tipos">
-                                ${tipos}
-                            </div>
-                        </div>
-                        <div class="info-section">
-                            <h3>Medidas</h3>
-                            <p><strong>Altura:</strong> ${poke.height / 10}m</p>
-                            <p><strong>Peso:</strong> ${poke.weight / 10}kg</p>
-                        </div>
-                        <div class="info-section">
-                            <h3>Estadísticas Base</h3>
-                            <div class="stats-container">
-                                ${statsHTML}
-                            </div>
-                        </div>
+            <div class="gameboy">
+                <!-- Ranura cartucho -->
+                <div class="gb-cartridge-slot"></div>
+
+                <!-- Parte superior: power -->
+                <div class="gb-top-strip">
+                    <div class="gb-power-label">
+                        <div class="gb-power-switch"></div>
+                        <span class="gb-power-dot"></span>
+                        <span class="gb-power-text">POWER</span>
                     </div>
                 </div>
+
+                <!-- Pantalla con bisel -->
+                <div class="gb-screen-bezel">
+                    <div class="gb-bezel-ridges">
+                        <div class="gb-ridge"></div>
+                        <div class="gb-ridge"></div>
+                    </div>
+                    <div class="gb-screen-area">
+                        <div class="gb-screen-label">DOT MATRIX WITH STEREO SOUND</div>
+                        <div class="gb-screen">
+                            <div class="gb-screen-content">
+                                <div class="gb-screen-top">
+                                    <div class="gb-poke-img">
+                                        <img src="${poke.sprites.other["official-artwork"].front_default}" alt="${poke.name}">
+                                    </div>
+                                    <div class="gb-poke-info">
+                                        <h2 class="gb-poke-name">${poke.name}</h2>
+                                        <span class="gb-poke-id">#${pokeId}</span>
+                                        <div class="gb-poke-tipos">${tipos}</div>
+                                        <div class="gb-poke-medidas">
+                                            <span>ALT: ${poke.height / 10}m</span>
+                                            <span>PES: ${poke.weight / 10}kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gb-screen-stats">
+                                    ${statsHTML}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Branding -->
+                <div class="gb-brand">
+                    <span class="gb-nintendo">Nintendo</span>
+                    <div class="gb-brand-row">
+                        <h1 class="gb-title">    GAMEBOY</h1>
+                        <span class="gb-tm">TM</span>
+                    </div>
+                </div>
+
+                <!-- Controles -->
+                <div class="gb-controls">
+                    <div class="gb-dpad-well">
+                        <div class="gb-dpad">
+                            <div class="gb-dpad-v"></div>
+                            <div class="gb-dpad-h"></div>
+                            <div class="gb-dpad-center"></div>
+                        </div>
+                    </div>
+                    <div class="gb-action-area">
+                        <div class="gb-action-buttons">
+                            <div class="gb-btn-wrap">
+                                <button class="gb-btn gb-btn-b" id="modalClose"></button>
+                                <span class="gb-btn-label">B</span>
+                            </div>
+                            <div class="gb-btn-wrap">
+                                <button class="gb-btn gb-btn-a"></button>
+                                <span class="gb-btn-label">A</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Select / Start -->
+                <div class="gb-menu-buttons">
+                    <div class="gb-menu-slot">
+                        <button class="gb-menu-btn"></button>
+                        <span class="gb-menu-label">SELECT</span>
+                    </div>
+                    <div class="gb-menu-slot">
+                        <button class="gb-menu-btn"></button>
+                        <span class="gb-menu-label">START</span>
+                    </div>
+                </div>
+
+                <!-- Speaker -->
+                <div class="gb-speaker">
+                    <div class="gb-speaker-line"></div>
+                    <div class="gb-speaker-line"></div>
+                    <div class="gb-speaker-line"></div>
+                    <div class="gb-speaker-line"></div>
+                    <div class="gb-speaker-line"></div>
+                    <div class="gb-speaker-line"></div>
+                </div>
+
+                <!-- Tornillo inferior -->
+                <div class="gb-screw"></div>
             </div>
         </div>
     `;
