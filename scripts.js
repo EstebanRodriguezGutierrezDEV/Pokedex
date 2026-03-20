@@ -197,7 +197,7 @@ function mostrarDetalles(poke) {
                 <div class="gb-brand">
                     <span class="gb-nintendo">Nintendo</span>
                     <div class="gb-brand-row">
-                        <h1 class="gb-title">    GAMEBOY</h1>
+                        <h1 class="gb-title">    POKEBOY</h1>
                         <span class="gb-tm">TM</span>
                     </div>
                 </div>
